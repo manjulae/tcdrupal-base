@@ -6,7 +6,7 @@
 
 - Since only for development the drupal source is not included within the image you will have to download it and mount it. 
 
-####Instructions:
+#### Instructions:
 
 `docker pull mariadb:10.0.26`
 
@@ -24,8 +24,12 @@
 
 `http://127.0.0.1:8081`
 
-`Database name: drupal
-Database user: root
-Database password: abc123
-Advanced Options:
-Database host: mysql`
+`Database name: drupal`
+
+`Database user: root`
+
+`Database password: abc123`
+
+`Advanced Options:`
+
+`Database host: mysql`
