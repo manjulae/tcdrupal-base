@@ -22,7 +22,7 @@ RUN mkdir /etc/httpd/vhost.d
 RUN sed -i 's/^\([^#]\)/#\1/g' /etc/httpd/conf.d/welcome.conf
 
 #install php 5.4.45 from remi repo
-RUN yum install php php-gd php-mbstring php-pdo php-mysqlnd php-xml vim wget -y
+RUN yum install php php-gd php-mbstring php-pdo php-mysqlnd php-xml php-pecl-uploadprogress vim wget -y
 
 RUN sed -i "s|;date.timezone =|date.timezone = Asia/Colombo|" /etc/php.ini
 
