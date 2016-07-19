@@ -2,6 +2,8 @@
 FROM centos:7
 MAINTAINER manjula@thinkcube.com
 
+RUN yum clean all
+
 WORKDIR /var/www/html
 
 RUN yum install epel-release -y
