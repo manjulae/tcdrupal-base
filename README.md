@@ -16,7 +16,7 @@
 
 `wget https://ftp.drupal.org/files/projects/drupal-7.34.tar.gz`
 
-`tar xzvf --strip-components=1 drupal-7.34.tar.gz -C ~/tcdrupal/drupal`
+`tar xzvf drupal-7.34.tar.gz --strip-components 1 -C ~/tcdrupal/drupal`
 
 `docker run --name mysql -v ~/tcdrupal/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=abc123 -e MYSQL_DATABASE=drupal -d mariadb:10.0.26`
 
