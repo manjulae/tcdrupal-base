@@ -15,9 +15,9 @@ RUN sed -i  "0,/enabled=0/{s/enabled=0/enabled=1/}" /etc/yum.repos.d/remi.repo
 #install apache 2.4.20 from ius repo
 RUN yum install httpd24u -y
 
-RUN echo "Include vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf
+#RUN echo "Include vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf
 
-RUN mkdir /etc/httpd/vhost.d
+#RUN mkdir /etc/httpd/vhost.d
 
 RUN sed -i 's/^\([^#]\)/#\1/g' /etc/httpd/conf.d/welcome.conf
 
@@ -27,5 +27,9 @@ RUN yum install php php-gd php-mbstring php-pdo php-mysqlnd -y
 RUN sed -i "s|;date.timezone =|date.timezone = Asia/Colombo|" /etc/php.ini
 
 RUN yum clean all
+
+VOLUME /etc/httpd/conf.d
+
+VOLUME /var/www/html
 
 EXPOSE 80
