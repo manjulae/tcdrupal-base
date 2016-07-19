@@ -2,7 +2,7 @@
 FROM centos:7
 MAINTAINER manjula@thinkcube.com
 
-WORKDIR /root
+WORKDIR /var/www/html
 
 RUN yum install epel-release -y
 
@@ -27,12 +27,6 @@ RUN yum install php php-gd php-mbstring php-pdo php-mysqlnd php-xml php-pecl-upl
 RUN sed -i "s|;date.timezone =|date.timezone = Asia/Colombo|" /etc/php.ini
 
 RUN yum clean all
-
-RUN wget https://ftp.drupal.org/files/projects/drupal-7.34.tar.gz -O /tmp/drupal-7.34.tar.gz
-
-RUN tar xzvf /tmp/drupal-7.34.tar.gz -C /usr/src
-
-RUN rm -f /tmp/drupal-7.34.tar.gz
 
 VOLUME /etc/httpd/vhost.d
 
