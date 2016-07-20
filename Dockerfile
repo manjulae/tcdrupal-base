@@ -15,6 +15,9 @@ RUN sed -i  "0,/enabled=0/{s/enabled=0/enabled=1/}" /etc/yum.repos.d/remi.repo
 RUN yum install httpd24u php php-gd php-mbstring php-pdo php-mysqlnd php-xml php-pecl-uploadprogress vim wget -y \
  && yum clean all
 
+#since we are not using a vhost and we need to process .htaccess file
+RUN sed -i ':a;N;$!ba;s/AllowOverride None/AllowOverride All/2' /etc/httpd/conf/httpd.conf
+
 RUN echo "IncludeOptional vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf
 
 RUN mkdir /etc/httpd/vhost.d
