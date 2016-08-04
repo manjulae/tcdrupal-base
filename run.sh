@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [[ -f /var/www/html/index.php ]];
-  then
-    chown -R apache:apache /var/www/html/*
-fi
+export HOME=/home/user
 
-/sbin/httpd -D NO_DETACH
+/usr/local/bin/gosu root rm -f /run/httpd/httpd.pid
+
+/usr/local/bin/gosu root /sbin/httpd -D NO_DETACH

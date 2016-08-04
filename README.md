@@ -18,9 +18,9 @@
 
 `tar xzvf drupal-7.34.tar.gz --strip-components 1 -C ~/tcdrupal/drupal`
 
-`docker run --name mysql -v ~/tcdrupal/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=abc123 -e MYSQL_DATABASE=drupal -d mariadb:10.0.26`
+`docker run --name mysql -v ~/tcdrupal/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=abc123 -e MYSQL_DATABASE=drupal --restart=unless-stopped -d mariadb:10.0.26`
 
-`docker run --name drupal --link mysql:mysql -p 8081:80 -v ~/tcdrupal/drupal:/var/www/html -d thinkcube/tcdrupal-base`
+`docker run --name drupal --link mysql:mysql -p 8081:80 -v ~/tcdrupal/drupal:/var/www/html --restart=unless-stopped -u user -d thinkcube/tcdrupal-base`
 
 `http://127.0.0.1:8081`
 
