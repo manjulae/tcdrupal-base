@@ -2,6 +2,6 @@
 
 export HOME=/home/user
 
-/usr/local/bin/gosu root /bin/rm -f /var/run/httpd/httpd.pid
+/usr/local/bin/gosu root /bin/rm -rf /var/run/httpd/* /run/httpd/* /tmp/httpd*
 
-/usr/local/bin/gosu root /sbin/httpd -D NO_DETACH
+/usr/local/bin/gosu root /sbin/httpd -D FOREGROUND
