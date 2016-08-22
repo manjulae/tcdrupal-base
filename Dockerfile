@@ -28,6 +28,7 @@ RUN sed -i ':a;N;$!ba;s/AllowOverride None/AllowOverride All/2' /etc/httpd/conf/
 RUN echo "IncludeOptional vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf \
  && sed -i "s|User apache|User user|" /etc/httpd/conf/httpd.conf \
  && sed -i "s|Group apache|Group user|" /etc/httpd/conf/httpd.conf \
+ && sed -i "s|#ServerName www.example.com:80|ServerName server|" /etc/httpd/conf/httpd.conf \
  && sed -i 's/^\([^#]\)/#\1/g' /etc/httpd/conf.d/welcome.conf
 
 RUN sed -i "s|;date.timezone =|date.timezone = Asia/Colombo|" /etc/php.ini
@@ -36,7 +37,7 @@ RUN useradd --shell /bin/bash -u 1000 -o -c "" -m user \
  && usermod -aG apache,root user
 
 RUN sed -i "1ialias ls='ls --color'" /home/user/.bashrc \
- && sed -i "2ialias apachectl='gosu root apachectl'" /home/user/.bashrc \
+ && sed -i "2ialias apachectl='gosu root httpd'" /home/user/.bashrc \
  && sed -i "3ialias yum='gosu root yum'" /home/user/.bashrc
 
 RUN chmod 770 /var/log/httpd
